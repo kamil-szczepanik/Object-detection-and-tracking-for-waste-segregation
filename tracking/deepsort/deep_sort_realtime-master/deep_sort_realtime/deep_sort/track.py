@@ -242,7 +242,6 @@ class Track:
             The associated detection.
 
         """
-        print('track id:', self.track_id)
         # self.original_ltwh = detection.get_ltwh()
         self.mean, self.covariance = kf.update(
             self.mean, self.covariance, detection.to_xyah()
