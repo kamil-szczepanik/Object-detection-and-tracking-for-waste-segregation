@@ -268,7 +268,7 @@ MODEL:
     NAME: SemSegFPNHead
     NORM: GN
     NUM_CLASSES: 54
-  WEIGHTS: /content/drive/MyDrive/inzynierka/project/detection/maskrcnn/output_zerowasteaug/model_final.pth
+  WEIGHTS: /content/Object-detection-and-tracking-for-waste-segregation/detection/maskrcnn/output_zerowasteaug/model_final.pth
 OUTPUT_DIR: /content/
 SEED: -1
 SOLVER:
