@@ -12,9 +12,8 @@ setup_logger()
 # import some common detectron2 utilities
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
-from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.config import get_cfg
-from detectron2.data.datasets import register_coco_instances
+from detectron2.data.catalog import Metadata
 
 
 def detect_and_track_zerowaste(dataset_metadata_catalog, fps=12, img_scale_percent=100, tracking="deepsort", detector_score_threshold=0.65,path_to_video='videos/08_frame-10-12.mp4'):
@@ -77,16 +76,19 @@ if __name__=="__main__":
     parser.add_argument("--fps", type=int, help="FPS of video stream", default=12)
     parser.add_argument("--img_scale_percent", type=int, help="Scale of frames in percent", default=100)
     parser.add_argument("--detector_score_threshold", type=float, help="Score threshold of the detector", default=0.65)
-    parser.add_argument("--path_to_dataset", type=str, help="Path to ZeroWaste dataset test folder", default="/content/drive/MyDrive/inzynierka/datasets/zerowaste-f-final/splits_final_deblurred/test/")
     parser.add_argument("--path_to_video", type=str, help="Path to video file", default='videos/08_frame-10-12.mp4')
     args = parser.parse_args()
 
-    path_to_dataset = args.path_to_dataset
 
     mp.set_start_method("spawn")
-    register_coco_instances("zerowaste_test", {}, path_to_dataset+"labels.json", path_to_dataset+"data")
-    zerowaste_test_metadata = MetadataCatalog.get("zerowaste_test")
-    dataset_dicts_test = DatasetCatalog.get("zerowaste_test")
+
+
+
+    zerowaste_test_metadata = Metadata()
+    zerowaste_test_metadata.set(thing_classes = ['rigid_plastic', 'cardboard', 'metal', 'soft_plastic'], 
+                                thing_dataset_id_to_contiguous_id={1: 0, 2: 1, 3: 2, 4: 3},
+                                evaluator_type='coco')
+
 
     detect_and_track_zerowaste(dataset_metadata_catalog=zerowaste_test_metadata, 
                                 tracking=args.tracking, 
