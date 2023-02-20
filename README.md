@@ -29,6 +29,6 @@ Implementation from [yolact](https://github.com/dbolya/yolact) repo.
 Multitracker created using OpenCV KCFTracker class.
 
 ## Quickstart in Google Colab
-Whole project was done in Google Colab environment. This [Colab Notebook](https://colab.research.google.com/drive/1SA4f0LhkRf6HNSk1X6s-yK0NZI2ly2Ex#scrollTo=2iLf2_sVnH4F) you'll find examples that show how to start the program. Output is a video with a vizualization of detection and tracking results.
+Whole project was done in Google Colab environment. In this [Colab Notebook](https://colab.research.google.com/drive/1SA4f0LhkRf6HNSk1X6s-yK0NZI2ly2Ex#scrollTo=2iLf2_sVnH4F) you'll find examples that show how to start the program. Output is a video with a vizualization of detection and tracking results.
 
 ![](videos/output_example.gif)
